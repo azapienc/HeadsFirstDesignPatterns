@@ -9,6 +9,6 @@ public class PizzaDrive {
     Pizza pizza = nyStore.orderPizza("cheese");
     System.out.println("Armando ordered a " + pizza.getName() + "\n");
     
-    pizza = nyStore.orderPizza("veggie");
+    pizza = nyStore.orderPizza("clam");
     System.out.println("Armando ordered a " + pizza.getName() + "\n");  }
 }
