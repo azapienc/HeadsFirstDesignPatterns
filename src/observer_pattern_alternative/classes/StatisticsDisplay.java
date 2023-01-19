@@ -2,9 +2,11 @@
 
 import java.util.ArrayList;
 
-import observer_pattern.interfaces.DisplayElement;
-import observer_pattern.interfaces.Observer;
-import observer_pattern.interfaces.Subject;
+import observer_pattern_alternative.interfaces.DisplayElement;
+import observer_pattern_alternative.interfaces.Observer;
+import observer_pattern_alternative.interfaces.Subject;
+
+
 
 /**
  * StatisticsDisplay
@@ -12,9 +14,9 @@ import observer_pattern.interfaces.Subject;
 public class StatisticsDisplay implements Observer, DisplayElement{
   private ArrayList<Float> temperature = new ArrayList<>();
   private ArrayList<Float> humidity = new ArrayList<>();
-  private Subject weatherData;
+  private WeatherData weatherData;
 
-  public StatisticsDisplay(Subject weatherData) {
+  public StatisticsDisplay(WeatherData weatherData) {
     this.weatherData = weatherData;
     weatherData.registerObserver(this);
   }
@@ -33,8 +35,8 @@ public class StatisticsDisplay implements Observer, DisplayElement{
 
   @Override
   public void update() {
-    this.temperature = weatherData.getTemperature();
-    this.humidity = weatherData.getHumidity();
+    this.temperature.add(weatherData.getTemperature());
+    this.humidity.add(weatherData.getHumidity());
     display();
   }
   

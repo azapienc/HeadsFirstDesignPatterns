@@ -1,9 +1,8 @@
  package observer_pattern_alternative.classes;
 
-
-import observer_pattern.interfaces.DisplayElement;
-import observer_pattern.interfaces.Observer;
-import observer_pattern.interfaces.Subject;
+import observer_pattern_alternative.interfaces.DisplayElement;
+import observer_pattern_alternative.interfaces.Observer;
+import observer_pattern_alternative.interfaces.Subject;
 
 /**
  * CurrentControlDisplay
@@ -11,9 +10,9 @@ import observer_pattern.interfaces.Subject;
 public class CurrentCondtionsDisplay implements Observer, DisplayElement{
   private float temperature;
   private float humidity;
-  private Subject weatherData;
+  private WeatherData weatherData;
 
-  public CurrentCondtionsDisplay(Subject weatherData) {
+  public CurrentCondtionsDisplay(WeatherData weatherData) {
     this.weatherData = weatherData;
     weatherData.registerObserver(this);
   }
@@ -24,9 +23,9 @@ public class CurrentCondtionsDisplay implements Observer, DisplayElement{
   }
 
   @Override
-  public void update(float temperature, float humidity, float pressure) {
-    this.temperature = temperature;
-    this.humidity = humidity;
+  public void update() {
+    this.temperature = weatherData.getTemperature();
+    this.humidity = weatherData.getHumidity();
     display();
   }
 

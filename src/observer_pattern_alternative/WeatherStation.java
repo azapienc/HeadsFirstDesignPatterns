@@ -1,9 +1,8 @@
  package observer_pattern_alternative;
 
-import observer_pattern.classes.CurrentCondtionsDisplay;
-import observer_pattern.classes.StatisticsDisplay;
-import observer_pattern.classes.WeatherData;
-import java.util.Observable;
+import observer_pattern_alternative.classes.CurrentCondtionsDisplay;
+import observer_pattern_alternative.classes.StatisticsDisplay;
+import observer_pattern_alternative.classes.WeatherData;
 
 public class WeatherStation {
   public static void main(String[] args) {

@@ -1,18 +1,19 @@
  package observer_pattern_alternative.classes;
 
 import java.util.ArrayList;
+import java.util.List;
 
-import observer_pattern.interfaces.Observer;
-import observer_pattern.interfaces.Subject;
+import observer_pattern_alternative.interfaces.Observer;
+import observer_pattern_alternative.interfaces.Subject;
 
 public class WeatherData implements Subject {
-  private ArrayList<Observer> observers;
+  private List<Observer> observers;
   private float temperature;
   private float humidity;
   private float pressure;
 
   public WeatherData() {
-    observers = new ArrayList<>();
+    observers = new ArrayList<Observer>();
   }
 
   @Override
@@ -22,14 +23,11 @@ public class WeatherData implements Subject {
 
   @Override
   public void removeObserver(Observer o) {
-    int i = observers.indexOf(o);
-    if (i >= 0) {
-      observers.remove(i);
-    }
+    observers.remove(o);
   }
 
   @Override
-  public void updateObservers() {
+  public void notifyObservers() {
     // this may be changed to functional
     for (Observer observer : observers) {
       observer.update();
@@ -37,7 +35,7 @@ public class WeatherData implements Subject {
   }
 
   public void measurementsChanged() {
-    updateObservers();
+    notifyObservers();
   }
 
   public void setMeasurement(float temperature, float humidity, float pressure) {
@@ -47,7 +45,7 @@ public class WeatherData implements Subject {
     measurementsChanged();
   }
 
-  public ArrayList getObservers() {
+  public List getObservers() {
     return observers;
   }
 
